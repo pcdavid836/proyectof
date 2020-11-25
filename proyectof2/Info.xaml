@@ -1,0 +1,44 @@
+﻿<Window x:Class="proyectof2.info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:proyectof2"
+        mc:Ignorable="d"
+        Title="info" Height="630" Width="386">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Label VerticalAlignment="Center" Content="Registro de Datos" FontSize="20" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label VerticalAlignment="Center" Grid.Row="1" Content="Username:" FontSize="14"/>
+        <Label VerticalAlignment="Center" Grid.Row="2" Content="Contraseña:" FontSize="14"/>
+        <Label VerticalAlignment="Center" Grid.Row="3" Content="Personaje:" FontSize="14"/>
+        <Label VerticalAlignment="Center" Grid.Row="4" Content="Clase:" FontSize="14"/>
+
+
+        <Button Margin="10" Grid.Row="6" Grid.ColumnSpan="4" Content="Guardar" FontSize="18" Click="B1_Click"/>
+        <TextBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="2" x:Name="textbox11" FontSize="12" Grid.ColumnSpan="3" Margin="10"/>
+        <TextBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" x:Name="textbox10" FontSize="12" Grid.ColumnSpan="3" Margin="10"/>
+        <TextBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="3" x:Name="textbox12" FontSize="12" Grid.ColumnSpan="3" Margin="10"/>
+        <TextBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="4" x:Name="textbox13" FontSize="12" Grid.ColumnSpan="3" Margin="10"/>
+        <DataGrid x:Name="datagrid1" Grid.Row="7" Grid.ColumnSpan="4" Grid.RowSpan="3" Margin="8"/>
+
+    </Grid>
+</Window>
