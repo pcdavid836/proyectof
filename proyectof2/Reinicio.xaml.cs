@@ -62,9 +62,9 @@ namespace proyectof2
                 {
                     if (ValidarUsuario(user, password))
                     {
-                        info info = new info();
+                        Nuevo nuevo = new Nuevo();
                         this.Hide();
-                        info.Show();
+                        nuevo.Show();
                         this.Close();
                     }
                     else

@@ -23,5 +23,37 @@ namespace proyectof2
         {
             InitializeComponent();
         }
+
+        private void bm1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bm2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bm3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bmask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bmexit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Cerrar la aplicación?", "Salir?", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            switch(result)
+            {
+                case MessageBoxResult.Yes:
+                    this.Close();
+                    break;
+            }
+                
+        }
+
+        
     }
 }
