@@ -26,6 +26,10 @@ namespace proyectof2
 
         private void bm1_Click(object sender, RoutedEventArgs e)
         {
+            Productos productos = new Productos();
+            this.Hide();
+            productos.Show();
+            this.Close();
 
         }
         private void bm2_Click(object sender, RoutedEventArgs e)
