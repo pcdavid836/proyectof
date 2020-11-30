@@ -20,6 +20,7 @@ namespace proyectof2
     /// </summary>
     public partial class Productos : Window
     {
+        Items items;
         string pathName = @"d:\productos.txt";
         public Productos()
         {
@@ -67,18 +68,49 @@ namespace proyectof2
                 string precioC = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
                 string precioV = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
                 string cantidad = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
+                
 
+                if (Confirmarp(cantidad))
+                {
+                    items.Cantidad = int.Parse(cantidad);
+                    if (ValidarRangop(items.Cantidad))
+                    {
+                        Productos productos = new Productos();
+                        productos.EscribirArchivoB(id + "," + nombreProducto + "," + codigoBarra + "," + precioC + "," + precioV + "," + cantidad);
+                        MessageBox.Show("Producto agregado con exito");
+                        CargarProductos();
+                    }
+                }
 
-                Productos productos = new Productos();
-                productos.EscribirArchivoB(id + "," + nombreProducto + "," + codigoBarra + "," + precioC + "," + precioV + "," + cantidad);
-                MessageBox.Show("Producto agregado con exito");
-                CargarProductos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error, La cantidad de un producto y el nombre no pueden estar vacias o no tener ningun valor..\nExcepcion: " + ex.Message);
                 Console.WriteLine("Excepcion: " + ex);
             }
+
+        }
+
+        private bool ValidarRangop(int cantidad)
+        {
+            bool respuesta = true;
+            if (items.Cantidad < 1)
+            {
+                MessageBox.Show("La cantidad del producto debe ser mayor a 0.", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
+        }
+
+        private bool Confirmarp(object cantidad)
+        {
+            bool respuesta = true;
+            if (cantidad == "")
+            {
+                MessageBox.Show("La cantidad solo puede ser definida por números!", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
         }
 
         private void beliminar_Click(object sender, RoutedEventArgs e)
