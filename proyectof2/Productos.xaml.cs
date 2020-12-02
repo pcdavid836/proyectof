@@ -20,7 +20,7 @@ namespace proyectof2
     /// </summary>
     public partial class Productos : Window
     {
-        Items items;
+
         string pathName = @"d:\productos.txt";
         public Productos()
         {
@@ -68,12 +68,12 @@ namespace proyectof2
                 string precioC = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
                 string precioV = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
                 string cantidad = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
-                
+                int externo;
 
                 if (Confirmarp(cantidad))
                 {
-                    items.Cantidad = int.Parse(cantidad);
-                    if (ValidarRangop(items.Cantidad))
+                    externo = int.Parse(cantidad);
+                    if (ValidarRangop(externo))
                     {
                         Productos productos = new Productos();
                         productos.EscribirArchivoB(id + "," + nombreProducto + "," + codigoBarra + "," + precioC + "," + precioV + "," + cantidad);
@@ -94,7 +94,7 @@ namespace proyectof2
         private bool ValidarRangop(int cantidad)
         {
             bool respuesta = true;
-            if (items.Cantidad < 1)
+            if (cantidad < 1)
             {
                 MessageBox.Show("La cantidad del producto debe ser mayor a 0.", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                 respuesta = false;
