@@ -69,16 +69,20 @@ namespace proyectof2
                 string precioV = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
                 string cantidad = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
                 int externo;
+                
 
-                if (Confirmarp(cantidad))
+                if (nombreP(nombreProducto))
                 {
-                    externo = int.Parse(cantidad);
-                    if (ValidarRangop(externo))
+                    if (Confirmarp(cantidad))
                     {
-                        Productos productos = new Productos();
-                        productos.EscribirArchivoB(id + "," + nombreProducto + "," + codigoBarra + "," + precioC + "," + precioV + "," + cantidad);
-                        MessageBox.Show("Producto agregado con exito");
-                        CargarProductos();
+                        externo = int.Parse(cantidad);
+                        if (ValidarRangop(externo))
+                        {
+                            Productos productos = new Productos();
+                            productos.EscribirArchivoB(id + "," + nombreProducto + "," + codigoBarra + "," + precioC + "," + precioV + "," + cantidad);
+                            MessageBox.Show("Producto agregado con exito");
+                            CargarProductos();
+                        }
                     }
                 }
 
@@ -89,6 +93,17 @@ namespace proyectof2
                 Console.WriteLine("Excepcion: " + ex);
             }
 
+        }
+
+        private bool nombreP(string nombreProducto)
+        {
+            bool respuesta = true;
+            if (nombreProducto == "")
+            {
+                MessageBox.Show("Ingrese el nombre del producto.", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
         }
 
         private bool ValidarRangop(int cantidad)

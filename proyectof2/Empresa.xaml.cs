@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Windows.Navigation;
 
 namespace proyectof2
 {
@@ -22,6 +24,20 @@ namespace proyectof2
         public Empresa()
         {
             InitializeComponent();
+        }
+
+        private void bolber3_Click(object sender, RoutedEventArgs e)
+        {
+            Nuevo nuevo = new Nuevo();
+            this.Hide();
+            nuevo.Show();
+            this.Close();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

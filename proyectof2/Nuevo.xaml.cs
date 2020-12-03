@@ -43,7 +43,10 @@ namespace proyectof2
 
         private void bmask_Click(object sender, RoutedEventArgs e)
         {
-
+            Empresa empresa = new Empresa();
+            this.Hide();
+            empresa.Show();
+            this.Close();
         }
 
         private void bmexit_Click(object sender, RoutedEventArgs e)
@@ -58,6 +61,12 @@ namespace proyectof2
                 
         }
 
-        
+        private void busuario_Click(object sender, RoutedEventArgs e)
+        {
+            info info = new info();
+            this.Hide();
+            info.Show();
+            this.Close();
+        }
     }
 }

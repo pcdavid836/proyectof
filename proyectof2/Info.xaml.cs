@@ -61,6 +61,14 @@ namespace proyectof2
             CargarUsuarios();
 
         }
+
+        private void bolber2_Click(object sender, RoutedEventArgs e)
+        {
+            Nuevo nuevo = new Nuevo();
+            this.Hide();
+            nuevo.Show();
+            this.Close();
+        }
     }
   }
 

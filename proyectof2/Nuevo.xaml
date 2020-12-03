@@ -25,7 +25,11 @@
         <Button x:Name="bm1" Margin="15" Grid.Row="1" Grid.ColumnSpan="3" Content="Productos" FontSize="16" Click="bm1_Click"></Button>
         <Button x:Name="bm3" Margin="15" Grid.Row="3" Grid.ColumnSpan="3" Content="Reportes" FontSize="16" Click="bm3_Click"></Button>
         <Button x:Name="bm2" Margin="15" Grid.Row="2" Grid.ColumnSpan="3" Content="Ventas" FontSize="16" Click="bm2_Click"></Button>
-
+        <Button x:Name="busuario" Margin="10" Grid.Row="0" Content="" FontSize="16" Click="busuario_Click" Width="33" Height="33" >
+            <Button.Background>
+                <ImageBrush ImageSource="usuario.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
         <Button x:Name="bmask" Margin="15" Grid.Row="6" Content="Quienes somos?" FontSize="16" Click="bmask_Click"></Button>
         <Button x:Name="bmexit" Margin="15" Grid.Row="6" Grid.Column="2"  Content="Salir" FontSize="16" Click="bmexit_Click"></Button>
 

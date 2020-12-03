@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:proyectof2"
         mc:Ignorable="d"
-        Title="Quienes somos?" Height="450" Width="650.857">
+        Title="Quienes somos?" Height="442" Width="500">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
 
+        </Grid.RowDefinitions>
+        <Image Source="tienda.png" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2"></Image>
+        <Button x:Name="bolber3" Margin="15" Grid.Row="5" Grid.Column="3"  Content="Volver" FontSize="16" Click="bolber3_Click"></Button>
+        <Label Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Content="Tienda Ejemplo" FontSize="20" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontWeight="Bold"></Label>
+        <TextBlock Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="3" FontSize="16" Text="La empresa se fundo el 01-02-2020 cuando nuestro docente indico crear este proyecto sobre crear una aplicacion que registre las ventas de productos, asi es como este ejemplo de aplicación y empresa comenzo, No olvides visitar nuestra página web, si quieres volver al menu solo preciona este botón." TextWrapping="WrapWithOverflow" HorizontalAlignment="center" ></TextBlock>
+        <Label Grid.Row="7" Content="Página Web:" FontSize="14" VerticalAlignment="Center"></Label>
+        <TextBlock Grid.Row="7" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="3">
+            <Hyperlink NavigateUri="https://www.epicwar.com/maps/" RequestNavigate="Hyperlink_RequestNavigate">https://www.epicwar.com/maps/</Hyperlink>
+        </TextBlock>
+       
     </Grid>
 </Window>
