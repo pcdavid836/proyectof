@@ -12,20 +12,34 @@ namespace proyectof2
         private string clase;
         private string nombreUsuario;
         private string password;
+        private string id;
 
         public User()
         {
 
         }
 
-        public User(string nombreP,string clase,string nombreUsuario, string password)
+  
+
+        public User(string id, string nombreP,string clase,string nombreUsuario, string password)
         {
+            this.id = id;
             this.nombreP = nombreP;
             this.clase = clase;
             this.nombreUsuario = nombreUsuario;
             this.password = password;
         }
 
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public string Username
+        {
+            get { return nombreUsuario; }
+            set { nombreUsuario = value; }
+        }
         public string Password
         {
             get { return password; }
@@ -37,15 +51,13 @@ namespace proyectof2
             get { return nombreP; }
             set { nombreP = value; }
         }
-        public string Username
-        {
-            get { return nombreUsuario; }
-            set { nombreUsuario = value; }
-        }
+    
         public string Clase
         {
             get { return clase; }
             set { clase = value; }
         }
+
+
     }
 }

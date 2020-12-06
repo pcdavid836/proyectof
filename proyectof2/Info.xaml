@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:proyectof2"
         mc:Ignorable="d"
-        Title="info" Height="630" Width="386">
+        Title="Gestion de Usuarios" Height="630" Width="386">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -34,8 +34,8 @@
         <Label VerticalAlignment="Center" Content="Registro de Datos" FontSize="20" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Label VerticalAlignment="Center" Grid.Row="1" Content="Username:" FontSize="14"/>
         <Label VerticalAlignment="Center" Grid.Row="2" Content="Contraseña:" FontSize="14"/>
-        <Label VerticalAlignment="Center" Grid.Row="3" Content="Personaje:" FontSize="14"/>
-        <Label VerticalAlignment="Center" Grid.Row="4" Content="Clase:" FontSize="14"/>
+        <Label VerticalAlignment="Center" Grid.Row="3" Content="Nombre:" FontSize="14" Grid.ColumnSpan="2" Margin="1,16,94,16"/>
+        <Label VerticalAlignment="Center" Grid.Row="4" Content="Id:" FontSize="14"/>
 
 
         <Button Margin="10" Grid.Row="6" Grid.ColumnSpan="4" Content="Guardar" FontSize="18" Click="B1_Click"/>

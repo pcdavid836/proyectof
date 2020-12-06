@@ -40,7 +40,7 @@ namespace proyectof2
                 while (linea != null)
                 {
                     datosUsuario = linea.Split(',');
-                    user = new User(datosUsuario[2], datosUsuario[3], datosUsuario[0], datosUsuario[1]);
+                    user = new User(datosUsuario[0], datosUsuario[3], datosUsuario[4], datosUsuario[1], datosUsuario[2]);
                     listaUsuarios.Add(user);
                     linea = tuberiaLectura.ReadLine();
                 }
@@ -52,11 +52,12 @@ namespace proyectof2
         private void B1_Click(object sender, RoutedEventArgs e)
         {
             string nombreP = textbox12.Text;
-            string clase = textbox13.Text;
+            string clase = Convert.ToString(DateTime.Today.ToString("dd-MM-yyyy"));
             string usuario = textbox10.Text;
             string password = textbox11.Text;
+            string id = textbox13.Text;
             Reinicio reinicio = new Reinicio();
-            reinicio.EscribirArchivo(usuario+","+password+","+nombreP+","+clase);
+            reinicio.EscribirArchivo(id+","+usuario+","+password+","+nombreP+","+clase);
             MessageBox.Show("Usuario creado con exito");
             CargarUsuarios();
 

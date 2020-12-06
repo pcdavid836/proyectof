@@ -35,7 +35,7 @@ namespace proyectof2
                 if (!File.Exists(pathName))
                 {
                     File.Create(pathName).Dispose();
-                    EscribirArchivo("admin,contraseña,Admin,Dios");
+                    EscribirArchivo("1,admin,contraseña,Admin,N/A.");
                 }
 
             }
@@ -94,7 +94,7 @@ namespace proyectof2
             while (linea != null)
             {
                 datosUsuario = linea.Split(',');
-                if (user == datosUsuario[0] && password == datosUsuario[1])
+                if (user == datosUsuario[1] && password == datosUsuario[2])
                 {
                     resultado = true;
                     break;
