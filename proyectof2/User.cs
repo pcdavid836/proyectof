@@ -46,13 +46,13 @@ namespace proyectof2
             set { password = value; }
         }
 
-        public string Personaje
+        public string Nombre
         {
             get { return nombreP; }
             set { nombreP = value; }
         }
     
-        public string Clase
+        public string Creación
         {
             get { return clase; }
             set { clase = value; }
