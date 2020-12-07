@@ -22,6 +22,7 @@ namespace proyectof2
     {
 
         string pathName = @"d:\productos.txt";
+        string pathNameAuxiliar = @"d:\auxiliar.txt";
         public Productos()
         {
             InitializeComponent();
@@ -130,7 +131,59 @@ namespace proyectof2
 
         private void beliminar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string ciEliminar = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el id del producto que desea eliminar:");
+                if (ciEliminar != "")
+                {
+                    string linea;
+                    string[] datosProductos;
+                    char separador = ',';
+                    bool eliminado = false;
+                    StreamReader tuberiaLectura = File.OpenText(pathName);
+                    StreamWriter tuberiaEscritura = File.AppendText(pathNameAuxiliar);
+                    linea = tuberiaLectura.ReadLine();
+                    while (linea != null)
+                    {
+                        datosProductos = linea.Split(separador);
+                        if (ciEliminar != datosProductos[0])
+                        {
+                            tuberiaEscritura.WriteLine(linea);
+                        }
+                        else
+                        {
+                            eliminado = true;
+                        }
+                        linea = tuberiaLectura.ReadLine();
+                    }
+                    tuberiaEscritura.Close();
+                    tuberiaLectura.Close();
 
+                    //vamos a copiar todo el contenido del auxiliar en el original
+                    File.Delete(pathName);
+                    File.Move(pathNameAuxiliar, pathName);
+                    File.Delete(pathNameAuxiliar);
+                    if (eliminado)
+                    {
+                        MessageBox.Show("El producto se ha eliminado con exito.");
+                        CargarProductos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El producto no existe.");
+                    }
+                    ciEliminar = "";
+                }
+                else
+                {
+                    MessageBox.Show("No se pemite un espacio vacio.");
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void bolber_Click(object sender, RoutedEventArgs e)
