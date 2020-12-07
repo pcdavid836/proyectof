@@ -20,7 +20,7 @@
         <Label VerticalAlignment="Center" Grid.Row="1" Content="Usuario:" FontSize="14"/>
         <Label VerticalAlignment="Center" Grid.Row="2" Content="Contraseña:" FontSize="14"/>
         <PasswordBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="2" x:Name="passwordbox1" FontSize="12" Grid.ColumnSpan="3" Margin="10"/>
-        <TextBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" Name="textbox1" FontSize="12" Grid.ColumnSpan="3" Margin="10"/>
+        <TextBox VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" Name="textbox1" FontSize="14" Grid.ColumnSpan="3" Margin="10"/>
         <Button x:Name="b1" Margin="10" Grid.Row="3" Grid.ColumnSpan="3" Content="INGRESAR" FontSize="16" Click="b1_Click"></Button>
     </Grid>
 </Window>

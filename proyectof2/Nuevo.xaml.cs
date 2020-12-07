@@ -34,7 +34,10 @@ namespace proyectof2
         }
         private void bm2_Click(object sender, RoutedEventArgs e)
         {
-
+            Ventas ventas = new Ventas();
+            this.Hide();
+            ventas.Show();
+            this.Close();
         }
         private void bm3_Click(object sender, RoutedEventArgs e)
         {
