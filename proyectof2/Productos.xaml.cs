@@ -158,8 +158,6 @@ namespace proyectof2
                     }
                     tuberiaEscritura.Close();
                     tuberiaLectura.Close();
-
-                    //vamos a copiar todo el contenido del auxiliar en el original
                     File.Delete(pathName);
                     File.Move(pathNameAuxiliar, pathName);
                     File.Delete(pathNameAuxiliar);
@@ -196,7 +194,60 @@ namespace proyectof2
 
         private void bmodificar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string idModificar = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el id del producto que desea modificar:");
+                if (idModificar != "")
+                {
+                    string linea;
+                    string[] datosProducto;
+                    char separador = ',';
+                    bool modificar = false;
+                    StreamReader tuberiaLectura = File.OpenText(pathName);
+                    StreamWriter tuberiaEscritura = File.AppendText(pathNameAuxiliar);
+                    linea = tuberiaLectura.ReadLine();
+                    while (linea != null)
+                    {
+                        datosProducto = linea.Split(separador);
+                        if (idModificar != datosProducto[0])
+                        {
+                            tuberiaEscritura.WriteLine(linea);
+                        }
+                        else
+                        {
+                            modificar = true;
+                            string productoModificado = txbProd.Text;
+                            tuberiaEscritura.WriteLine(idModificar + "," + productoModificado);
+                        }
+                        linea = tuberiaLectura.ReadLine();
+                    }
+                    tuberiaEscritura.Close();
+                    tuberiaLectura.Close();
 
+
+                    File.Delete(pathName);
+                    File.Move(pathNameAuxiliar, pathName);
+                    File.Delete(pathNameAuxiliar);
+                    if (modificar)
+                    {
+                        MessageBox.Show("El producto se modifico con exito");
+                        CargarProductos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El producto no existe");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un ID valido");
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

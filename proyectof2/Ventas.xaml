@@ -57,5 +57,6 @@
         <Button Grid.ColumnSpan="4" Margin="5" Grid.Row="8" Content="REALIZAR VENTA" FontSize="16" Click="generate_Click"></Button>
         <DataGrid x:Name="listgrid" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" Grid.RowSpan="8" Margin="10"></DataGrid>
         <DataGrid x:Name="ventasgrid" Grid.Row="10" Grid.RowSpan="6" Grid.ColumnSpan="8" Margin="10"></DataGrid>
+        <Label VerticalAlignment="Center" Content="Lista de Ventas" FontSize="20" Grid.Row="9" HorizontalAlignment="Left" Grid.Column="0" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

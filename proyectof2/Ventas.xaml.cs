@@ -31,15 +31,16 @@ namespace proyectof2
             nuevo.Show();
             this.Close();
         }
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void generate_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

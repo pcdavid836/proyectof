@@ -25,6 +25,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
         <Label VerticalAlignment="Center" Content="LISTA DE PRODUCTOS" FontSize="18" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="3"/>
@@ -32,12 +33,16 @@
 
         <Button x:Name="bañadir" Margin="10" Grid.Row="2" Content="Añadir" FontSize="16" Click="bañadir_Click" Grid.ColumnSpan="2"></Button>
         <Button x:Name="beliminar" Margin="10" Grid.Row="3" Content="Eliminar" FontSize="16" Click="beliminar_Click" Grid.ColumnSpan="2"></Button>
-        <Button x:Name="bmodificar" Margin="10" Grid.Row="2" Content="Modificar" FontSize="16" Click="bmodificar_Click" Grid.ColumnSpan="2" Grid.Column="3"></Button>
-        <Button x:Name="bolber" Margin="10" Grid.Row="0" Content="" FontSize="16" Click="bolber_Click" Width="33" Height="33" >
+        <Button x:Name="bmodificar" Margin="10" Grid.Row="4" Content="Modificar" FontSize="16" Click="bmodificar_Click" Grid.ColumnSpan="2" Grid.Column="3"></Button>
+        <Button x:Name="bolber" Margin="44,10,44,12"  VerticalAlignment="Center" Content="" FontSize="16" Click="bolber_Click" Width="34" Height="33" HorizontalAlignment="Center" >
             <Button.Background>
                 <ImageBrush ImageSource="casa.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="datagridp" Grid.Row="4" Grid.ColumnSpan="6" Grid.RowSpan="5" Margin="10"/>
+        <DataGrid x:Name="datagridp" Grid.Row="5" Grid.ColumnSpan="6" Grid.RowSpan="5" Margin="10"/>
+
+        <TextBox Name="txbProd" Margin="10" Grid.Row="3" FontSize="16" Grid.ColumnSpan="2" Grid.Column="3"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Ingrese datos a modificar:" Margin="10" Grid.Row="2" FontSize="16" Grid.ColumnSpan="2" Grid.Column="3"/>
+
     </Grid>
 </Window>
