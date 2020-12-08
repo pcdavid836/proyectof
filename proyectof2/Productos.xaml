@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:proyectof2"
         mc:Ignorable="d"
-        Title="Productos" Height="575" Width="620">
+        Title="Productos" Height="580" Width="630">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
         <DataGrid x:Name="datagridp" Grid.Row="5" Grid.ColumnSpan="6" Grid.RowSpan="5" Margin="10"/>
 
         <TextBox Name="txbProd" Margin="10" Grid.Row="3" FontSize="16" Grid.ColumnSpan="2" Grid.Column="3"/>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Ingrese datos a modificar:" Margin="10" Grid.Row="2" FontSize="16" Grid.ColumnSpan="2" Grid.Column="3"/>
-
+        
+        <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Text="Datos a modificar:(Nombre,Codigo,PrecioC,PrecioV,Cantidad):" Margin="10,12,0,11" Grid.Row="2" FontSize="12" Grid.ColumnSpan="2" Grid.Column="3" TextWrapping="WrapWithOverflow"></TextBlock>
     </Grid>
 </Window>
