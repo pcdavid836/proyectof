@@ -47,7 +47,7 @@ namespace proyectof2
                 string linea2 = tuberiaLectura2.ReadLine();
                 while (linea2 != null)
                 {
-                    datosProductos = linea2.Split(',');
+                    datosProductos = linea2.Split('/');
                     items = new Items(int.Parse(datosProductos[0]), datosProductos[1], int.Parse(datosProductos[2]), double.Parse(datosProductos[3]), double.Parse(datosProductos[4]), int.Parse(datosProductos[5]));
                     listaProductos.Add(items);
                     linea2 = tuberiaLectura2.ReadLine();
@@ -70,7 +70,11 @@ namespace proyectof2
                 string precioV = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
                 string cantidad = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
                 int externo;
-                
+                double precioCD = Convert.ToDouble(precioC);
+                precioCD = Math.Round(precioCD, 2);
+                double precioVD = Convert.ToDouble(precioV);
+                precioVD = Math.Round(precioVD, 2);
+
 
                 if (nombreP(nombreProducto))
                 {
@@ -80,7 +84,7 @@ namespace proyectof2
                         if (ValidarRangop(externo))
                         {
                             Productos productos = new Productos();
-                            productos.EscribirArchivoB(id + "," + nombreProducto + "," + codigoBarra + "," + precioC + "," + precioV + "," + cantidad);
+                            productos.EscribirArchivoB(id + "/" + nombreProducto + "/" + codigoBarra + "/" + precioCD + "/" + precioVD + "/" + cantidad);
                             MessageBox.Show("Producto agregado con exito");
                             CargarProductos();
                         }
@@ -201,7 +205,7 @@ namespace proyectof2
                 {
                     string linea;
                     string[] datosProducto;
-                    char separador = ',';
+                    char separador = '/';
                     bool modificar = false;
                     StreamReader tuberiaLectura = File.OpenText(pathName);
                     StreamWriter tuberiaEscritura = File.AppendText(pathNameAuxiliar);
@@ -217,7 +221,7 @@ namespace proyectof2
                         {
                             modificar = true;
                             string productoModificado = txbProd.Text;
-                            tuberiaEscritura.WriteLine(idModificar + "," + productoModificado);
+                            tuberiaEscritura.WriteLine(idModificar + "/" + productoModificado);
                         }
                         linea = tuberiaLectura.ReadLine();
                     }
