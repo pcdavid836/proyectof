@@ -124,9 +124,11 @@ namespace proyectof2
                     string nombrev = ((listgrid.Columns[1].GetCellContent(listgrid.Items[codigoSearch-1]) as TextBlock).Text);
                 //Microsoft.VisualBasic.Interaction.InputBox("Ingrese el nombre del producto:");
                 
-                double preciocv = double.Parse(((listgrid.Columns[3].GetCellContent(listgrid.Items[codigoSearch - 1]) as TextBlock).Text));
+                string preciocva = ((listgrid.Columns[3].GetCellContent(listgrid.Items[codigoSearch - 1]) as TextBlock).Text);
+                double preciocv = double.Parse(preciocva);
                 //Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
-                double preciovv = double.Parse(((listgrid.Columns[4].GetCellContent(listgrid.Items[codigoSearch - 1]) as TextBlock).Text));
+                string preciovva = ((listgrid.Columns[4].GetCellContent(listgrid.Items[codigoSearch - 1]) as TextBlock).Text);
+                double preciovv = double.Parse(preciovva);
                 //Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
                 string cantidadv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
                 int externo2;

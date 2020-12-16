@@ -142,7 +142,7 @@ namespace proyectof2
                 {
                     string linea;
                     string[] datosProductos;
-                    char separador = ',';
+                    char separador = '/';
                     bool eliminado = false;
                     StreamReader tuberiaLectura = File.OpenText(pathName);
                     StreamWriter tuberiaEscritura = File.AppendText(pathNameAuxiliar);
