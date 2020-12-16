@@ -1,0 +1,46 @@
+﻿<Window x:Class="proyectof2.Reportes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:proyectof2"
+        mc:Ignorable="d"
+        Title="Reportes" Height="520" Width="670">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Label VerticalAlignment="Center" Content="REPORTES DE VENTA" FontSize="18" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Label VerticalAlignment="Center" Content="Total Bs." FontSize="18" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="8" />
+        <Label x:Name="supertotal" VerticalAlignment="Center" Content="0.00" FontSize="18" HorizontalAlignment="Right" Grid.Column="4" Grid.Row="8" />
+
+      
+        <Button x:Name="bolber" Margin="44,10,44,12"  VerticalAlignment="Center" Content="" FontSize="16" Click="bolber_Click" Width="34" Height="33" HorizontalAlignment="Center" >
+            <Button.Background>
+                <ImageBrush ImageSource="casa.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
+        <DataGrid x:Name="registrogrid" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="7" Margin="15"/>
+
+        
+
+    </Grid>
+</Window>

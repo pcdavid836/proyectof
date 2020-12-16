@@ -21,7 +21,7 @@ namespace proyectof2
     public partial class Ventas : Window
     {
         string pathName = @"d:\productos.txt";
-        string pathNameVenta = @"d:\vender.txt";
+        string pathName2 = @"d:\registroVentas.txt";
         public Ventas()
         {
             InitializeComponent();
@@ -29,14 +29,15 @@ namespace proyectof2
 
         }
 
-        internal void EscribirArchivoB2(string mensaje)
+        internal void EscribirArchivoB2(string mensaje2, string mensaje3)
         {
-            StreamWriter tuberiaEscritura2 = File.AppendText(pathName);
-            StreamWriter tuberiaEscritura3 = File.AppendText(pathNameVenta);
-            tuberiaEscritura2.WriteLine(mensaje);
-            tuberiaEscritura3.WriteLine(mensaje);
-            tuberiaEscritura2.Close();
+            
+            StreamWriter tuberiaEscritura3 = File.AppendText(pathName);
+           
+            tuberiaEscritura3.WriteLine(mensaje3);
+     
             tuberiaEscritura3.Close();
+        
         }
         
 
@@ -56,19 +57,37 @@ namespace proyectof2
             string[] datosProductos;
             if (File.Exists(pathName))
             {
-                StreamReader tuberiaLectura2 = File.OpenText(pathName);
-                string linea2 = tuberiaLectura2.ReadLine();
+                StreamReader tuberiaLectura3 = File.OpenText(pathName);
+                string linea2 = tuberiaLectura3.ReadLine();
                 while (linea2 != null)
                 {
                     datosProductos = linea2.Split('/');
                     items = new Items(int.Parse(datosProductos[0]), datosProductos[1], int.Parse(datosProductos[2]), double.Parse(datosProductos[3]), double.Parse(datosProductos[4]), int.Parse(datosProductos[5]));
                     listaProductos.Add(items);
-                    linea2 = tuberiaLectura2.ReadLine();
+                    linea2 = tuberiaLectura3.ReadLine();
                 }
-                tuberiaLectura2.Close();
+                tuberiaLectura3.Close();
                listgrid.ItemsSource = listaProductos;
             }
 
+
+            Consumidor consumidor;
+            List<Consumidor> listaRegistro = new List<Consumidor>();
+            string[] datosRegistro;
+            if (File.Exists(pathName2))
+            {
+                StreamReader tuberiaLectura2 = File.OpenText(pathName2);
+                string linea2 = tuberiaLectura2.ReadLine();
+                while (linea2 != null)
+                {
+                    datosRegistro = linea2.Split('/');
+                    consumidor = new Consumidor(int.Parse(datosRegistro[0]), int.Parse(datosRegistro[1]), datosRegistro[2], datosRegistro[3], double.Parse(datosRegistro[4]));
+                    listaRegistro.Add(consumidor);
+                    linea2 = tuberiaLectura2.ReadLine();
+                }
+                tuberiaLectura2.Close();
+                ventasgrid.ItemsSource = listaRegistro;
+            }
         }
 
 
@@ -164,15 +183,90 @@ namespace proyectof2
             }
             return respuesta;
         }
-
+        
         private void generate_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                int idf = int.Parse(textbox3.Text);
+                int nit = int.Parse(textbox1.Text);
+                string nombreOR = textbox2.Text;
+                string fechaaux = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                string fecha = fechaaux;
+                double total = 200;
 
+
+                if (surfingVoid(idf))
+                {
+                    if (surfingVoid2(nit))
+                    {
+                        if (surfingVoid3(nombreOR))
+                        {
+                            if (ValidarRate(total))
+                            {
+                                Consumidor consumidor = new Consumidor();
+                                consumidor.EscribirArchivoB3(idf + "/" + nit + "/" + nombreOR + "/" + fecha + "/" + total);
+                                MessageBox.Show("Producto agregado con exito");
+                                CargarProductos();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error, Ingrese datos correctos en el Registro.\nExcepcion: " + ex.Message);
+                Console.WriteLine("Excepcion: " + ex);
+            }
         }
 
+        private bool surfingVoid(int idf)
+        {
+            bool respuesta = true;
+            if (Convert.ToString(idf)  == "")
+            {
+                MessageBox.Show("Ningun espacio debe estar vacio!", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
+        }
+
+        private bool surfingVoid2(int nit)
+        {
+            bool respuesta = true;
+            if (Convert.ToString(nit) == "")
+            {
+                MessageBox.Show("Ningun espacio debe estar vacio!", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
+        }
+
+        private bool surfingVoid3(string nombreOR)
+        {
+            bool respuesta = true;
+            if (nombreOR == "")
+            {
+                MessageBox.Show("Ningun espacio debe estar vacio!", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
+        }
+
+        private bool ValidarRate(double total)
+        {
+            bool respuesta = true;
+            if (total < 1)
+            {
+                MessageBox.Show("El precio de la compra debe ser mayor a 0 Bs.", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             addgrid1.Items.Clear();
+            totla.Content = "0.00";
         }
 
     }

@@ -41,7 +41,10 @@ namespace proyectof2
         }
         private void bm3_Click(object sender, RoutedEventArgs e)
         {
-
+            Reportes reportes = new Reportes();
+            this.Hide();
+            reportes.Show();
+            this.Close();
         }
 
         private void bmask_Click(object sender, RoutedEventArgs e)
