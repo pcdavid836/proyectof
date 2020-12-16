@@ -73,13 +73,13 @@ namespace proyectof2
             if (File.Exists(pathName))
             {
                 StreamReader tuberiaLectura3 = File.OpenText(pathName);
-                string linea2 = tuberiaLectura3.ReadLine();
-                while (linea2 != null)
+                string lineaex = tuberiaLectura3.ReadLine();
+                while (lineaex != null)
                 {
-                    datosProductos = linea2.Split('/');
+                    datosProductos = lineaex.Split('/');
                     items = new Items(int.Parse(datosProductos[0]), datosProductos[1], int.Parse(datosProductos[2]), double.Parse(datosProductos[3]), double.Parse(datosProductos[4]), int.Parse(datosProductos[5]));
                     listaProductos.Add(items);
-                    linea2 = tuberiaLectura3.ReadLine();
+                    lineaex = tuberiaLectura3.ReadLine();
                 }
                 tuberiaLectura3.Close();
                listgrid.ItemsSource = listaProductos;
