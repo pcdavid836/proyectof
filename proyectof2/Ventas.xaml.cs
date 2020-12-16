@@ -26,7 +26,6 @@ namespace proyectof2
         {
             InitializeComponent();
             CargarProductos();
-            CargarProductos2();
 
         }
 
@@ -44,6 +43,12 @@ namespace proyectof2
 
         private void CargarProductos()
         {
+            addgrid1.Columns.Add(new DataGridTextColumn { Header = "Id", Binding = new Binding("Id") });
+            addgrid1.Columns.Add(new DataGridTextColumn { Header = "Nombre", Binding = new Binding("Nombre") });
+            addgrid1.Columns.Add(new DataGridTextColumn { Header = "CodigoProducto", Binding = new Binding("CodigoProducto") });
+            addgrid1.Columns.Add(new DataGridTextColumn { Header = "PrecioC", Binding = new Binding("PrecioC") });
+            addgrid1.Columns.Add(new DataGridTextColumn { Header = "PrecioV", Binding = new Binding("PrecioV") });
+            addgrid1.Columns.Add(new DataGridTextColumn { Header = "Cantidad", Binding = new Binding("Cantidad") });
             string shortDate = DateTime.Now.ToString("yyyy-MM-dd");
             fecha.Content = shortDate;
             Items items;
@@ -66,26 +71,7 @@ namespace proyectof2
 
         }
 
-        private void CargarProductos2()
-        {
-            Venderte venderte;
-            List<Items> listaVenderte = new List<Items>();
-            string[] datosVenderte;
-            if (File.Exists(pathNameVenta))
-            {
-                StreamReader tuberiaLectura3 = File.OpenText(pathName);
-                string linea3 = tuberiaLectura3.ReadLine();
-                while (linea3 != null)
-                {
-                    datosVenderte = linea3.Split('/');
-                    venderte = new Venderte(int.Parse(datosVenderte[0]), datosVenderte[1],int.Parse(datosVenderte[2]), double.Parse(datosVenderte[3]), int.Parse(datosVenderte[4]), int.Parse(datosVenderte[5]));
-                    //listaVenderte.Add(venderte);
-                    linea3 = tuberiaLectura3.ReadLine();
-                }
-                tuberiaLectura3.Close();
-                addgrid1.ItemsSource = listaVenderte;
-            }
-        }
+
 
         private void bolber8_Click(object sender, RoutedEventArgs e)
         {
@@ -98,36 +84,52 @@ namespace proyectof2
         {
             try
             {
-                string idv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el id del producto:");
-                string nombrev = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el nombre del producto:");
-                string codigoBarrav = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el codigo de barra:");
-                string preciocv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
-                string preciovv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
-                string cantidadv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
+                    string codigoBarrav = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el codigo del producto:");
+                    string idv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el id del producto:");
+                    string nombrev = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el nombre del producto:");
+                    int codigoSearch = int.Parse(codigoBarrav);
+                    string preciocv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
+                    string preciovv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
+                    string cantidadv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
                 int externo2;
-
-
-                if (nombrePv(nombrev))
+                    int codigoLimite = listgrid.Items.Count-1;
+                if (rangocode(codigoSearch, codigoLimite))
                 {
-                    if (Confirmarp2(cantidadv))
+                    if (nombrePv(nombrev))
                     {
-                        externo2 = int.Parse(cantidadv);
-                        if (ValidarRangop2(externo2))
+                        if (Confirmarp2(cantidadv))
                         {
-                            Productos productos = new Productos();
-                            productos.EscribirArchivoB(idv + "/" + nombrev + "/" + codigoBarrav + "/" + preciocv + "/" + preciovv + "/" + cantidadv);
-                            MessageBox.Show("Producto agregado a la lista.");
-                            CargarProductos2();
+                            externo2 = int.Parse(cantidadv);
+                            if (ValidarRangop2(externo2))
+                            {
+                                totla.Content = codigoLimite;
+                                List<Venderte> cajaLista = new List<Venderte>();
+
+                                addgrid1.Items.Add(new Venderte { Id = int.Parse(idv), Nombre = nombrev, CodigoProducto = int.Parse(codigoBarrav), PrecioC = Double.Parse(preciocv), PrecioV = Double.Parse(preciovv), Cantidad = int.Parse(cantidadv) });
+
+                                MessageBox.Show("Producto agregado a la lista.");
+                            }
                         }
                     }
-                }
-
+                }  
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error, La cantidad de un producto y el nombre no pueden estar vacias o no tener ningun valor..\nExcepcion: " + ex.Message);
                 Console.WriteLine("Excepcion: " + ex);
             }
+        }
+
+        private bool rangocode(int codigoSearch,int codigoLimite)
+        {
+            bool respuesta = true;
+            if (codigoSearch < 1 || codigoSearch > codigoLimite)
+            {
+                MessageBox.Show("Ingrese la Id correcta del producto.", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                respuesta = false;
+            }
+            return respuesta;
         }
 
         private bool ValidarRangop2(int externo2)
@@ -170,7 +172,8 @@ namespace proyectof2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            addgrid1.Items.Clear();
         }
+
     }
 }

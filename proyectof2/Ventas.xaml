@@ -45,7 +45,7 @@
         <Label VerticalAlignment="Center" Content="Lista de Productos" FontSize="20" HorizontalAlignment="Center" Grid.Column="5" Grid.ColumnSpan="2"/>
         <Label Content="NIT/CI" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
         <Label Content="Nombre o Razon Social" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" FontSize="14"></Label>
-        <Label Content="Id o Codigo de barra" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="14"></Label>
+        <Label Content="Productos a agregar:" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="14"></Label>
         <Label x:Name="fecha" Content="fecha" Grid.Row="0" HorizontalAlignment="Center" Grid.Column="3" VerticalAlignment="Center" FontSize="16"></Label>
         <TextBox x:Name="textbox1" Grid.Row="2" Margin="5"></TextBox>
         <TextBox x:Name="textbox2" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5"></TextBox>
@@ -53,11 +53,11 @@
         <Button Content="Agregar" Grid.Column="3" Grid.Row="3" Margin="5" Click="add_Click"></Button>
         <DataGrid x:Name="addgrid1" Grid.Row="4" Grid.RowSpan="3"  Grid.ColumnSpan="4" Grid.Column="0"></DataGrid>
         <Label Content="Total Bs." Grid.Row="7" Grid.Column="2" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16"></Label>
-        <Label Content="0.00" Grid.Row="7" Grid.Column="3" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16"></Label>
+        <Label x:Name="totla" Content="0.00" Grid.Row="7" Grid.Column="3" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16"></Label>
         <Button Grid.ColumnSpan="4" Margin="5" Grid.Row="8" Content="REALIZAR VENTA" FontSize="16" Click="generate_Click"></Button>
         <DataGrid x:Name="listgrid" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" Grid.RowSpan="8" Margin="10"></DataGrid>
         <DataGrid x:Name="ventasgrid" Grid.Row="10" Grid.RowSpan="6" Grid.ColumnSpan="8" Margin="10"></DataGrid>
         <Label VerticalAlignment="Center" Content="Lista de Ventas" FontSize="20" Grid.Row="9" HorizontalAlignment="Left" Grid.Column="0" Grid.ColumnSpan="2"/>
-        <Button Grid.Row="7" Margin="5" Content="Eliminar" Click="Button_Click"></Button>
+        <Button Grid.Row="7" Margin="5" Content="Limpiar" Click="Button_Click"></Button>
     </Grid>
 </Window>
