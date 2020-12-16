@@ -26,7 +26,22 @@ namespace proyectof2
         {
             InitializeComponent();
             CargarProductos();
+            Devolucion();
 
+        }
+
+        private void Devolucion()
+        {
+            double principal = 0;
+            for (int p = 0; p < addgrid1.Items.Count; p++)
+            {
+                double costo = (double.Parse((addgrid1.Columns[4].GetCellContent(addgrid1.Items[p]) as TextBlock).Text));
+                double medida = (double.Parse((addgrid1.Columns[5].GetCellContent(addgrid1.Items[p]) as TextBlock).Text));
+                double supertotla = Math.Round(costo * medida, 2);
+                principal = principal + supertotla;
+            }
+
+            totla.Content = principal;
         }
 
         internal void EscribirArchivoB2(string mensaje2, string mensaje3)
@@ -103,13 +118,17 @@ namespace proyectof2
         {
             try
             {
-                    string codigoBarrav = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el codigo del producto:");
-                    string idv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el id del producto:");
-                    string nombrev = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el nombre del producto:");
+                    string codigoBarrav = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el codigo del producto a registrar:");
                     int codigoSearch = int.Parse(codigoBarrav);
-                    string preciocv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
-                    string preciovv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
-                    string cantidadv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
+                    string idv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el id de la lista de los productos:");
+                    string nombrev = ((listgrid.Columns[1].GetCellContent(listgrid.Items[codigoSearch-1]) as TextBlock).Text);
+                //Microsoft.VisualBasic.Interaction.InputBox("Ingrese el nombre del producto:");
+                
+                double preciocv = double.Parse(((listgrid.Columns[3].GetCellContent(listgrid.Items[codigoSearch - 1]) as TextBlock).Text));
+                //Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de compra del producto:");
+                double preciovv = double.Parse(((listgrid.Columns[4].GetCellContent(listgrid.Items[codigoSearch - 1]) as TextBlock).Text));
+                //Microsoft.VisualBasic.Interaction.InputBox("Ingrese el precio de venta del producto:");
+                string cantidadv = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la cantidad del producto:");
                 int externo2;
                     int codigoLimite = listgrid.Items.Count-1;
                 if (rangocode(codigoSearch, codigoLimite))
@@ -121,12 +140,12 @@ namespace proyectof2
                             externo2 = int.Parse(cantidadv);
                             if (ValidarRangop2(externo2))
                             {
-                                totla.Content = codigoLimite;
+                                
                                 List<Venderte> cajaLista = new List<Venderte>();
 
-                                addgrid1.Items.Add(new Venderte { Id = int.Parse(idv), Nombre = nombrev, CodigoProducto = int.Parse(codigoBarrav), PrecioC = Double.Parse(preciocv), PrecioV = Double.Parse(preciovv), Cantidad = int.Parse(cantidadv) });
-
+                                addgrid1.Items.Add(new Venderte { Id = int.Parse(idv), Nombre = nombrev, CodigoProducto = int.Parse(codigoBarrav), PrecioC = preciocv, PrecioV = preciovv, Cantidad = int.Parse(cantidadv) });
                                 MessageBox.Show("Producto agregado a la lista.");
+                                Devolucion();
                             }
                         }
                     }
@@ -154,7 +173,7 @@ namespace proyectof2
         private bool ValidarRangop2(int externo2)
         {
             bool respuesta = true;
-            if (externo2 < 1)
+            if (externo2 < 0)
             {
                 MessageBox.Show("La cantidad del producto debe ser mayor a 0.", "Error en el ingreso de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                 respuesta = false;
@@ -192,8 +211,8 @@ namespace proyectof2
                 int nit = int.Parse(textbox1.Text);
                 string nombreOR = textbox2.Text;
                 string fechaaux = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                string fecha = fechaaux;
-                double total = 200;
+                string fecha = fechaaux; 
+                double total = Convert.ToDouble(totla.Content);
 
 
                 if (surfingVoid(idf))
