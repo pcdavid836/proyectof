@@ -52,13 +52,7 @@ namespace proyectof2
                 tuberiaLectura4.Close();
                 registrogrid.ItemsSource = listaRegistro;
             }
-           double sum = 0;
-            for (int i = 0; i < registrogrid.Items.Count - 1; i++)
-            {
-                sum += (double.Parse((registrogrid.Columns[4].GetCellContent(registrogrid.Items[i]) as TextBlock).Text));
-            }
-            sum = Math.Round(sum, 2);
-            supertotal.Content = sum; 
+           
         }
 
 
@@ -68,6 +62,17 @@ namespace proyectof2
             this.Hide();
             nuevo.Show();
             this.Close();
+        }
+
+        private void Baccion_Click(object sender, RoutedEventArgs e)
+        {
+            double sum = 0;
+            for (int i = 0; i < registrogrid.Items.Count - 1; i++)
+            {
+                sum += (double.Parse((registrogrid.Columns[4].GetCellContent(registrogrid.Items[i]) as TextBlock).Text));
+            }
+            sum = Math.Round(sum, 2);
+            supertotal.Content = sum;
         }
     }
 }

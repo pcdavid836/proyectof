@@ -39,7 +39,7 @@
             </Button.Background>
         </Button>
         <DataGrid x:Name="registrogrid" Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="7" Margin="15"/>
-
+        <Button Content="Resultado" FontSize="14" Margin="5" Grid.Column="0" Grid.Row="8" Click="Baccion_Click"></Button>
         
 
     </Grid>
